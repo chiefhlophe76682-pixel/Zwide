@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Good Morning Tenele ❤️</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle, #30001e, #080008 70%);
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.scene {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 900px;
+}
+
+.heart-wrap {
+  position: absolute;
+  top: 25%;
+  width: 160px;
+  height: 160px;
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 22px #ff168f);
+}
+
+.heart {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  left: 35px;
+  top: 35px;
+  background: linear-gradient(135deg, #ffb8dd, #ff168f, #950044);
+  transform: rotate(-45deg);
+  border-radius: 8px;
+  box-shadow: inset -8px -8px 18px #790035,
+              inset 7px 7px 15px #ffd5eb,
+              0 0 30px #ff168f;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  background: inherit;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -45px;
+  left: 0;
+}
+
+.heart::after {
+  top: 0;
+  left: 45px;
+}
+
+.heart-core {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+}
+
+.name {
+  font-size: 29px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 12px #ff168f, 0 0 25px #ff168f;
+}
+
+.love {
+  font-size: 12px;
+  margin-top: 7px;
+  color: #fff0f8;
+  text-shadow: 0 0 8px #ff168f;
+}
+
+.ring {
+  position: absolute;
+  top: 28%;
+  width: 280px;
+  height: 100px;
+  border: 2px solid rgba(255, 105, 180, .65);
+  border-radius: 50%;
+  box-shadow: 0 0 15px #ff168f;
+  animation: spin 6s linear infinite;
+}
+
+.ring2 {
+  transform: rotateX(65deg) rotateZ(60deg);
+  border-color: rgba(255, 220, 240, .5);
+  animation-direction: reverse;
+}
+
+.message {
+  position: absolute;
+  bottom: 12%;
+  width: 90%;
+  text-align: center;
+  animation: appear 2s ease;
+}
+
+.message h2 {
+  color: #ff8ec9;
+  font-size: 25px;
+  margin-bottom: 15px;
+  text-shadow: 0 0 15px #ff168f;
+}
+
+.message p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #ffe6f3;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(90deg, #ff168f, #ff75b9);
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  box-shadow: 0 0 20px #ff168f;
+  cursor: pointer;
+}
+
+.particle {
+  position: absolute;
+  bottom: -20px;
+  color: #ff77bd;
+  animation: rise linear infinite;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotateY(-8deg); }
+  50% { transform: translateY(-15px) rotateY(8deg); }
+}
+
+@keyframes spin {
+  from { rotate: 0deg; }
+  to { rotate: 360deg; }
+}
+
+@keyframes rise {
+  0% { transform: translateY(0); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateY(-110vh); opacity: 0; }
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-height: 600px) {
+  .heart-wrap { top: 10%; transform: scale(.75); }
+  .ring { top: 15%; }
+  .message { bottom: 3%; }
+}
+</style>
+</head>
+
+<body>
+<div class="scene">
+
+  <div class="ring"></div>
+  <div class="ring ring2"></div>
+
+  <div class="heart-wrap">
+    <div class="heart"></div>
+    <div class="heart-core">
+      <div class="name">Tenele</div>
+      <div class="love">♥ My Sweetheart ♥</div>
+    </div>
+  </div>
+
+  <div class="message">
+    <h2>Good Morning, Tenele ☀️</h2>
+    <p>
+      May your morning be beautiful,<br>
+      your smile brighter than the sun,<br>
+      and your day filled with love. ❤️
+    </p>
+    <button onclick="sendLove()">Send You Love 💌</button>
+  </div>
+
+</div>
+
+<script>
+for (let i = 0; i < 35; i++) {
+  const p = document.createElement("div");
+  p.className = "particle";
+  p.textContent = Math.random() > 0.5 ? "♥" : "✦";
+  p.style.left = Math.random() * 100 + "%";
+  p.style.animationDuration = (5 + Math.random() * 8) + "s";
+  p.style.animationDelay = Math.random() * 8 + "s";
+  p.style.fontSize = (10 + Math.random() * 16) + "px";
+  document.querySelector(".scene").appendChild(p);
+}
+
+function sendLove() {
+  alert("Tenele ❤️ You are my favorite thought this morning. Have a beautiful day, my love! 💕");
+}
+</script>
+
+</body>
+</html>
